@@ -12,6 +12,13 @@ describe "User pages" do
     it { should have_selector('h1',    text: 'Sign up') }
     it { should have_selector('title', text: full_title('Sign up')) }
 
+  end
+
+  describe "signup" do
+    before { visit signup_path }
+
+    let(:submit) { "Create my account" }
+
     describe "with invalid information" do
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
@@ -32,7 +39,7 @@ describe "User pages" do
     end
   end
 
-  describe "profile page" do
+    describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }
 

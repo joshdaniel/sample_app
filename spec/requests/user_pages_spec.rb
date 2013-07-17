@@ -105,6 +105,15 @@ describe "User pages" do
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
         it { should have_link('Sign out') }
 
+        describe "should redirect to root path if a signed in user tries to signup" do
+          before do
+            visit root_url
+            click_link "Sign up now!"
+          end
+
+          it { should have_content('Welcome to the Sample App') }
+        end
+
         describe "followed by signout" do
           before { click_link "Sign out" }
           it { should have_link('Sign in') }

@@ -106,12 +106,9 @@ describe "User pages" do
         it { should have_link('Sign out') }
 
         describe "should redirect to root path if a signed in user tries to signup" do
-          before do
-            visit root_url
-            click_link "Sign up now!"
-          end
+          before { visit signup_path }
 
-          it { should have_content('Welcome to the Sample App') }
+          it { should have_content('view my profile') }
         end
 
         describe "followed by signout" do

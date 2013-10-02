@@ -27,8 +27,19 @@ describe "Static pages" do
       end
 
       it "should render the user's feed" do
+        page.should have_content("2 microposts")
         user.feed.each do |item|
           page.should have_selector("li##{item.id}", text: item.content)
+        end
+      end
+
+      describe "pluralize and delete" do
+        before do
+          click_link "delete"
+        end
+        it "should pluralize micropost count correctly after deleting to 1" do
+          should have_content("1 micropost")
+          should_not have_content("1 microposts")
         end
       end
     end

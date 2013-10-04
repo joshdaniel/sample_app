@@ -40,4 +40,10 @@ SampleApp::Application.configure do
   silence_warnings do
     BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
   end
+
+  begin
+    DatabaseCleaner.strategy = :transaction
+  rescue NameError
+    raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  end
 end

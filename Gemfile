@@ -51,3 +51,5 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+gem 'database_cleaner'

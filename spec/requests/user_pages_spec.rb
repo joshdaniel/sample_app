@@ -138,6 +138,7 @@ describe "User pages" do
     describe "micropost pagination" do
 
       before(:all) { 30.times { FactoryGirl.create(:micropost, user: user) } }
+      after(:all)  {user.microposts.delete_all }
 
       it { should have_selector('div.pagination') }
 

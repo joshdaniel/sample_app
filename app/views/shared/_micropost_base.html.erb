@@ -1,4 +1,4 @@
-<span class="content"><%= micropost_base.content %></span>
+<span class="content"><%= wrap(micropost_base.content) %></span>
 <span class="timestamp">
     Posted <%= time_ago_in_words(micropost_base.created_at) %> ago.
   </span>

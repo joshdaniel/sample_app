@@ -12,6 +12,7 @@
 
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
